@@ -720,7 +720,7 @@ YUI(M.yui.loader, {lang: M.local_mail_lang}).use('io-base', 'node', 'json-parse'
         }
     };
 
-    //Success call
+    // Success call
     var handleSuccess = function (transactionid, response, args) {
         var obj = Y.JSON.parse(response.responseText);
         var img;
@@ -790,7 +790,7 @@ YUI(M.yui.loader, {lang: M.local_mail_lang}).use('io-base', 'node', 'json-parse'
                     }));
                 }
             }
-            //Undo last action
+            // Undo last action
             if (obj.undo && mail_undo_function != 'undo') {
                 var msg = M.util.get_string('undo'+mail_undo_function, 'local_mail', obj.undo.split(',').length);
                 if (mail_undo_function == 'delete') {
@@ -806,6 +806,8 @@ YUI(M.yui.loader, {lang: M.local_mail_lang}).use('io-base', 'node', 'json-parse'
             if(obj.redirect) {
                 document.location.href = obj.redirect;
             }
+            mail_select_none();
+            mail_enable_all_buttons(false);
         }
     };
 
